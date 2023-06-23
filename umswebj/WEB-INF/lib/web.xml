@@ -1,0 +1,23 @@
+<web-app>
+	<servlet>
+		<servlet-name>LoginServletMapping</servlet-name>
+		<servlet-class>servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServletMapping</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginServletMapping</servlet-name>
+		<servlet-class>servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServletMapping</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+</web-app>
