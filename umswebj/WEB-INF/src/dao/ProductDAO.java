@@ -12,6 +12,7 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 
+import bean.Order;
 import bean.Product;
 
 public class ProductDAO extends DbConnection {
@@ -39,7 +40,7 @@ public class ProductDAO extends DbConnection {
 				// 列データ格納用のオブジェクト
 				Product product = new Product();
 
-				product.setProduct_id(rs.getString("product_id"));
+				product.setProductId(rs.getString("product_id"));
 				product.setProduct(rs.getString("product"));
 				product.setPrice(rs.getInt("price"));
 				product.setStock(rs.getInt("stock"));
@@ -68,5 +69,42 @@ public class ProductDAO extends DbConnection {
 		}
 		return list;
 	}
+
+	// 在庫数の更新
+	public void update(int stock, int productId) {
+
+		// 変数宣言
+		Connection con = null;
+		Statement smt = null;
+
+		// SQL文
+		String sql = "UPDATE product_info SET stock ='" + stock + "' WHERE product_id ='" + productId + "'";
+
+		try {
+			con = getConnection();
+			smt = con.createStatement();
+
+			// SQL文を転送
+			smt.executeUpdate(sql);
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			// リソースの開放
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+	}
+
 
 }

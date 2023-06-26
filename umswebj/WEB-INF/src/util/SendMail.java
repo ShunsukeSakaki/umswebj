@@ -1,22 +1,19 @@
 package util;
 
 import java.util.Properties;
-import java.util.ArrayList;
 import java.util.Date;
 
-import servlet.*;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Message;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.InternetAddress;
+import bean.*;
 
 public class SendMail {
 
-	public static void main(String[] args) {
-
-		BuyConfirmServlet bcs = new BuyConfirmServlet();
+	public void sendMail(User user, String orderInfo) {
 		try {
 			Properties props = System.getProperties();
 
@@ -41,13 +38,15 @@ public class SendMail {
 					new InternetAddress("test.sender@kanda-it-school-system.com", "神田IT School", "iso-2022-jp"));
 
 			// 送信先メールアドレスを指定（ご自分のメールアドレスに変更）
-			mimeMessage.setRecipients(Message.RecipientType.TO, "shunsuke000828@gmail.com");
+			mimeMessage.setRecipients(Message.RecipientType.TO, user.getMail());
 
 			// メールのタイトルを指定
-			mimeMessage.setSubject("Hello World", "iso-2022-jp");
+			mimeMessage.setSubject("注文内容ご確認", "iso-2022-jp");
 
 			// メールの内容を指定
-			mimeMessage.setText("Hello World\nOk!", "iso-2022-jp");
+			String mailContent = user.getName() + "様\n\n" + "ユニフォームのご購入ありがとうございます。\n" + "以下内容でご注文を受け付けましたので、ご連絡致します。\n\n"
+					+ orderInfo + "またのご利用よろしくお願いします。";
+			mimeMessage.setText(mailContent, "iso-2022-jp");
 
 			// メールの形式を指定
 			mimeMessage.setHeader("Content-Type", "text/plain; charset=iso-2022-jp");

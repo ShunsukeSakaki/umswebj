@@ -1,12 +1,12 @@
-<%@page import="bean.Order,bean.OrderDetail,bean.OrderStatus,"%>
+<%@page import="bean.Order,bean.OrderInfo,bean.OrderStatus,"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 
 <%
 	String error = (String) request.getAttribute("error");
-	ArrayList<OrderDetail> detailList = (ArrayList<OrderDetail>) request.getAttribute("detailList");
+	ArrayList<OrderInfo> detailList = (ArrayList<OrderInfo>) request.getAttribute("detailList");
 	OrderStatus orderStatus = (OrderStatus)request.getAttribute("orderStatus");
-	OrderDetail orderDetail = new OrderDetail();
+	OrderInfo orderDetail = new OrderInfo();
 	int totalPrice = 0; //個数*金額
 	int sum = 0; //合計金額の合算
 %>
@@ -19,7 +19,7 @@
 		<hr style="height: 5; background-color: #0000FF" />
 		<br>
 		<p>
-			<a href="./ListUserServlet">[受注一覧へ戻る]</a>
+			<a href="./orderList">[受注一覧へ戻る]</a>
 
 		</p>
 		<p style="text-align: center; font-size: 24px">受注詳細情報</p>
@@ -28,11 +28,9 @@
 	<table style="margin: auto; border: 0;">
 		<tr>
 			<td colspan=2 style="text-align: center"><a
-				href="<%=request.getContextPath()%>/DetailUserServlet?userid=<%=user.getUserid()%>&cmd=updateUser"><input
+				href="<%=request.getContextPath()%>/StatusUpdateServlet?orderNumber=<%=orderStatus.getOrderNum()%>&cmd=updateOrder">
+				<input
 					type="submit" value="更新"></a>
-			<td colspan=2 style="text-align: center">
-			<a href="<%=request.getContextPath()%>/DeleteUserServlet?userid=<%=user.getUserid()%>"><input
-					type="submit" value="削除"></a>
 		</tr>
 		<tr>
 			<th

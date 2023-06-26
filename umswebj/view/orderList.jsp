@@ -22,7 +22,7 @@ MyFormat myFormat = new MyFormat();
 						[<a href="<%=request.getContextPath() %>/view/menu.jsp">メニューへ戻る</a>]
 					</td>
 					<td style="width:30%; font-size:24px; text-align:center; color:#A52A2A">受注状況一覧</td>
-					<td style="width:30%; text-align:center">&nbsp</td>
+					<td style="width:30%; text-align:center">&nbsp;</td>
 				</tr>
 			</table>
 
@@ -37,7 +37,7 @@ MyFormat myFormat = new MyFormat();
 					<th style="background-color:#D3D3D3; width:14%">発注日</th>
 					<th style="background-color:#D3D3D3; width:14%">入金状況</th>
 					<th style="background-color:#D3D3D3; width:14%">発送準備</th>
-					<th style="background-color:#D3D3D3; width:14%">&nbsp</th>
+					<th style="background-color:#D3D3D3; width:14%">&nbsp;</th>
 				</tr>
 				<%if(list != null){
 					for(int i = 0; i < list.size(); i++){%>
@@ -65,8 +65,8 @@ MyFormat myFormat = new MyFormat();
 								<%} %>
 							</td>
 							<td style="text-align:center; width:14%">
-								<a href="<%=request.getContextPath() %>/orderDetail">詳細</a>/
-								<a href="<%=request.getContextPath() %>/orderUpdate">更新</a>
+								<a href="<%=request.getContextPath() %>/orderDetail?orderNumber=<%=list.get(i).getOrderNum() %>&cmd=detailOrder">詳細</a>/
+								<a href="<%=request.getContextPath() %>/orderUpdate?orderNumber=<%=list.get(i).getOrderNum() %>&cmd=updateOrder">更新</a>
 							</td>
 						</tr>
 					<%}

@@ -6,10 +6,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import bean.Order;
-import bean.OrderDetail;
+import bean.OrderInfo;
 import bean.OrderStatus;
 import bean.User;
-import dao.OrderDetailDAO;
+import dao.OrderInfoDAO;
 import dao.OrderStatusDAO;
 import dao.UserDAO;
 
@@ -30,19 +30,19 @@ public class OrderDetailServlet extends HttpServlet {
 		try {
 			// セッション切れの場合エラーを投げる
 			if (User == null) {
-				error = "セッション切れの為、購入は出来ません。";
+				error = "セッション切れの為、詳細の表示は出来ません。";
 				cmd = "session";
 				return;
 			}
 
 			// 注文者のidをもとに商品情報を格納する配列
-			ArrayList<OrderDetail> detailList = new ArrayList<OrderDetail>();
+			ArrayList<OrderInfo> detailList = new ArrayList<OrderInfo>();
 			//配送状況など、商品情報以外を格納する配列
 			OrderStatus orderStatus = new OrderStatus();
 
 			// オブジェクト
 			OrderStatusDAO orderStatusDao = new OrderStatusDAO();
-			OrderDetailDAO orderDetailDao = new OrderDetailDAO();
+			OrderInfoDAO orderDetailDao = new OrderInfoDAO();
 
 			// userid検索メソッド
 			detailList = orderDetailDao.selectByOrderNumber(orderNumber);
@@ -64,8 +64,8 @@ public class OrderDetailServlet extends HttpServlet {
 			return;// エラーが発生した場合、tryを脱してfinallyへ飛ぶ
 
 		} finally {
-			if (error.equals("") && cmd.equals("orderStatus")) {
-				request.getRequestDispatcher("/view/orderStatus.jsp").forward(request, response);
+			if (error.equals("") && cmd.equals("detailOrder")) {
+				request.getRequestDispatcher("/view/detailOrder.jsp").forward(request, response);
 
 			}
 			if (error.equals("") && cmd.equals("updateOrder")) {

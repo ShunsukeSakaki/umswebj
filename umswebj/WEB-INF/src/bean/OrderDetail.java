@@ -1,79 +1,35 @@
-//DTO：データの入れ物としてのクラス(受注情報)
 package bean;
 
 public class OrderDetail {
 
 	private int orderNumber; // 注文番号
-	private int userId; // ユーザID
-	private int productId; // 商品番号
+	private int user_id; // ユーザーID
+	private int product_id; // 商品ID
 	private int count; // 個数
-	private String product;// 商品名
-	private int price;// 価格
-	private int stock;// 在庫数
-	private String imageUrl;// 写真
 
 	public int getOrderNumber() {
 		return orderNumber;
 	}
-
 	public void setOrderNumber(int orderNumber) {
 		this.orderNumber = orderNumber;
 	}
-
-	public int getUserId() {
-		return userId;
+	public int getUser_id() {
+		return user_id;
 	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
-
-	public int getProductId() {
-		return productId;
+	public int getProduct_id() {
+		return product_id;
 	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
-
 	public int getCount() {
 		return count;
 	}
-
 	public void setCount(int count) {
 		this.count = count;
-	}
-
-	public String getProduct() {
-		return product;
-	}
-
-	public void setProduct(String product) {
-		this.product = product;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 }

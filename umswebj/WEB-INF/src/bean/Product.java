@@ -3,7 +3,7 @@ package bean;
 public class Product {
 
 	// 商品idを格納する変数
-	private String product_id;
+	private String productId;
 	// 商品名を格納する変数
 	private String product;
 	// 価格を格納する変数
@@ -16,7 +16,7 @@ public class Product {
 
 	// コンストラクタ
 	public Product() {
-		product_id = null;
+		productId = null;
 		product= null;
 		price = 0;
 		stock = 0;
@@ -24,13 +24,13 @@ public class Product {
 	}
 
 
-	public String getProduct_id() {
-		return product_id;
+	public String getProductId() {
+		return productId;
 	}
 
 
-	public void setProduct_id(String product_id) {
-		this.product_id = product_id;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 

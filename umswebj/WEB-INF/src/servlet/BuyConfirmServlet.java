@@ -96,7 +96,7 @@ public class BuyConfirmServlet extends HttpServlet {
 			// DAOオブジェクト生成
 			UserDAO userDao = new UserDAO();
 			OrderDAO orderDao = new OrderDAO();
-			OrderDetailDAO ordDetailDao = new OrderDetailDAO();
+			OrderInfoDAO ordDetailDao = new OrderInfoDAO();
 
 			// Userオブジェクト生成
 			User user = userDao.selectByEmail(email);
@@ -126,9 +126,9 @@ public class BuyConfirmServlet extends HttpServlet {
 			orderDao.insert(order);
 
 			// OrderStatusオブジェクト生成
-			OrderDetail ordDetail = new OrderDetail();
+			OrderInfo ordDetail = new OrderInfo();
 
-			ArrayList<OrderDetail> ordDetailList = ordDetailDao.select();
+			ArrayList<OrderInfo> ordDetailList = ordDetailDao.select();
 
 		} catch (IllegalStateException e) {
 			// DB接続エラー

@@ -29,7 +29,7 @@ public class StatusUpdateServlet extends HttpServlet {
 		String cmd = "";
 
 		// 入力パラメータを取得する
-		String userId = request.getParameter("userId");
+		String orderNumber = request.getParameter("orderNumber");
 		String paymentStatus = request.getParameter("paymentStatus");
 		String deliveryStatus = request.getParameter("deliveryStatus");
 
@@ -46,7 +46,7 @@ public class StatusUpdateServlet extends HttpServlet {
 
 			// パラメータをオブジェクトにセット
 			Order order = new Order();
-			order.setUserId(Integer.parseInt(userId));
+			order.setOrderNumber(Integer.parseInt(orderNumber));
 			order.setPaymentStatus(paymentStatus);
 			order.setDeliveryStatus(deliveryStatus);
 
